@@ -13,7 +13,9 @@ repositories {
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
-    implementation "com.github.twitch4j:twitch4j:1.2.0"
+    implementation "com.github.twitch4j:twitch4j:1.2.1"
+    implementation "ch.qos.logback:logback-classic:1.2.3"
+
     implementation "org.openjfx:javafx-base:15.0.1"
     implementation "org.openjfx:javafx-base:15.0.1:linux"
     implementation "org.openjfx:javafx-fxml:15.0.1"
@@ -24,7 +26,7 @@ dependencies {
     implementation "org.openjfx:javafx-graphics:15.0.1:linux"
     implementation "org.openjfx:javafx-controls:15.0.1"
     implementation "org.openjfx:javafx-controls:15.0.1:linux"
-    implementation "ch.qos.logback:logback-classic:1.2.3"
+
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
 }
