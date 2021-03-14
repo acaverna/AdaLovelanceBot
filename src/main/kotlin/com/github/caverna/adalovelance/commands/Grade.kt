@@ -11,9 +11,9 @@ class Grade:OnChatMessageListener {
             val grade = Random.nextInt(11)
             val resp = "/me ${msg.user} você merece nota $grade!"
             if(grade >= 7){
-                chat.sendMessage("$resp Parabens!")
+                chat.sendMessage("$resp Parabens! profbrGoCang profbrGoCang profbrGoCang")
             } else {
-                chat.sendMessage("$resp Estude mais!")
+                chat.sendMessage("$resp Estude mais! NotLikeThis NotLikeThis NotLikeThis")
             }
 
         }

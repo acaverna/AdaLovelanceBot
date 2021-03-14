@@ -1,5 +1,7 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.4.31'
+    id 'org.jetbrains.kotlin.plugin.noarg' version '1.4.31'
+    id 'org.jetbrains.kotlin.plugin.jpa' version '1.2.41'
 }
 
 group 'org.example'
@@ -15,6 +17,11 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation "com.github.twitch4j:twitch4j:1.2.1"
     implementation "ch.qos.logback:logback-classic:1.2.3"
+
+    implementation "com.h2database:h2:1.4.200"
+    implementation "org.hibernate:hibernate-core:5.4.29.Final"
+
+
 
     implementation "org.openjfx:javafx-base:15.0.1"
     implementation "org.openjfx:javafx-base:15.0.1:linux"
