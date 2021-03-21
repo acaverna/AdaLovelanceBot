@@ -6,13 +6,14 @@ As funcionalidades previstas no bot visam atender as demandas da live do ProfBru
 
 # Recursos
 
-* [ ] Integração com a twitch:
-  - [ ] IRC;
+* [X] Integração com a twitch:
+  - [X] IRC;
   - [ ] PubSub;
-* [ ] Banco de dados SQLite para armazenamento de dados;
-* [ ] Criação do comando **!presente** que realiza o registro da frequência de um usuário do chat;
-* [ ] Criação do comando **!frequencia** que realiza a verificação da frequência de um usuário do chat;
-* [ ] Criação do comando **!show <streamer>** que exibe os dados de um streamer no chat da live;
+* [X] Banco de dados ~~SQLite~~ H2 para armazenamento de dados;
+* [X] Criação do comando **!presente** que realiza o registro da frequência de um usuário do chat;
+* [X] Criação do comando **!frequencia** que realiza a verificação da frequência de um usuário do chat;
+* [X] Criação do comando **!nota** que exibe uma nota aleatória para o usuário do chat que executou o comando;  
+* [ ] Criação do comando **!s <streamer>** que exibe os dados de um streamer no chat da live;
 * [ ] Criação do comando **!d2** que realiza a rolagem de um dado de duas faces e exibe o resultado no chat;
 * [ ] Criação do comando **!d4** que realiza a rolagem de um dado de quatro faces e exibe o resultado no chat;
 * [ ] Criação do comando **!d6** que realiza a rolagem de um dado de seis faces e exibe o resultado no chat;

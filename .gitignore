@@ -29,3 +29,5 @@ build
 
 src/main/resources/twitch.properties
 
+*.db
+

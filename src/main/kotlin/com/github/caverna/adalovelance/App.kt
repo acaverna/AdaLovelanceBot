@@ -1,13 +1,10 @@
 package com.github.caverna.adalovelance
 
 import com.github.caverna.adalovelance.commands.Grade
+import com.github.caverna.adalovelance.commands.Presence
 import com.github.caverna.adalovelance.commands.Terminal
-import com.github.caverna.adalovelance.model.Presence
-import com.github.caverna.adalovelance.persistence.PresenceRepository
 import com.github.caverna.adalovelance.twitch.TwitchAPI
-import com.github.caverna.adalovelance.util.HibernateUtil
 import org.h2.tools.Server
-import org.hibernate.cfg.Configuration
 import java.util.*
 
 class App
@@ -23,10 +20,11 @@ fun main() {
     val clientId = props.getProperty("BOT_TWITCH_CLIENTID")
     val secretId = props.getProperty("BOT_TWITCH_SECRETID")
 
-    val twitchAPI = TwitchAPI(channel, token, clientId, secretId)
-
-    twitchAPI.setOnChatMessageListener(Terminal())
-    twitchAPI.setOnChatMessageListener(Grade())
+    TwitchAPI(channel, token, clientId, secretId).apply{
+        setOnChatMessageListener(Terminal())
+        setOnChatMessageListener(Grade())
+        setOnChatMessageListener(Presence())
+    }
 
 
 }
