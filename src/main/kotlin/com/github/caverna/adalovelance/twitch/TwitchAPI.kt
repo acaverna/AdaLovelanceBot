@@ -5,7 +5,10 @@ import com.github.philippheuer.credentialmanager.domain.OAuth2Credential
 import com.github.twitch4j.TwitchClient
 import com.github.twitch4j.TwitchClientBuilder
 import com.github.twitch4j.chat.TwitchChat
+import com.github.twitch4j.chat.events.IRCEventHandler
 import com.github.twitch4j.chat.events.channel.ChannelMessageEvent
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class TwitchAPI(
     private val channel: String,
@@ -36,8 +39,14 @@ class TwitchAPI(
         this.twitchClient.chat.eventManager.onEvent(ChannelMessageEvent::class.java) { t ->
             val chatMessage = ChatMessage(t.message, t.user.name, t.messageEvent.firedAt.time)
             this.chatMessageListeners.forEach{
-                it.onChatMessage(chatMessage, this.chat)
+                GlobalScope.launch {
+                    it.onChatMessage(chatMessage, chat)
+                }
             }
+        }
+
+        this.twitchClient.chat.eventManager.onEvent(IRCEventHandler::class.java){
+
         }
     }
 
@@ -49,7 +58,7 @@ class TwitchAPI(
         this.chatMessageListeners.add(listener)
     }
 
-    class Chat(val chat: TwitchChat, val channel: String): ITwitchChat{
+    class Chat(private val chat: TwitchChat, private val channel: String): ITwitchChat{
         override fun sendMessage(text:String){
             this.chat.sendMessage(this.channel, text)
         }

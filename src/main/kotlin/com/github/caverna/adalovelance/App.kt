@@ -2,13 +2,16 @@ package com.github.caverna.adalovelance
 
 import com.github.caverna.adalovelance.commands.Grade
 import com.github.caverna.adalovelance.commands.Presence
+import com.github.caverna.adalovelance.commands.ShowStreamer
 import com.github.caverna.adalovelance.commands.Terminal
 import com.github.caverna.adalovelance.twitch.TwitchAPI
 import org.h2.tools.Server
 import java.util.*
+import kotlin.time.ExperimentalTime
 
 class App
 
+@ExperimentalTime
 fun main() {
 
     Server.createTcpServer("-tcpPort", "9092", "-tcpAllowOthers").start()
@@ -24,6 +27,7 @@ fun main() {
         setOnChatMessageListener(Terminal())
         setOnChatMessageListener(Grade())
         setOnChatMessageListener(Presence())
+        setOnChatMessageListener(ShowStreamer())
     }
 
 
