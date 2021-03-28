@@ -11,13 +11,15 @@ class TerminalCommand(bot: IBot) : BaseCommand(bot), OnChatMessageListener {
     private val logger = LoggerFactory.getLogger(TerminalCommand::class.java.name)
 
     override fun start() {
-        logger.info("Iniciando o comando...")
+        logger.info("Iniciando o comando ${TerminalCommand::class.java.name}...")
         bot.setOnChatMessageListener(this)
+        logger.info("Comando ${TerminalCommand::class.java.name} inicializado!")
     }
 
     override fun stop() {
-        logger.info("Parando o comando...")
+        logger.info("Parando o comando ${TerminalCommand::class.java.name}...")
         bot.removeOnChatMessageListener(this)
+        logger.info("Comando ${TerminalCommand::class.java.name} finalizado!")
     }
 
     override fun onChatMessage(msg: ChatMessage) {

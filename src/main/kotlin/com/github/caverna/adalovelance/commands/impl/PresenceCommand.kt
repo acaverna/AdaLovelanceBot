@@ -12,31 +12,35 @@ import java.util.*
 
 class PresenceCommand(bot: IBot) : BaseCommand(bot), OnChatMessageListener {
 
-    private val PRESENTE = "!presente"
-    private val FREQUENCIA = "!frequencia"
-    private val FREQUÊNCIA = "!frequência"
+    private val PRESENTE_CMD = "!presente"
+    private val FREQUENCIA_CMD = "!frequencia"
+    private val FREQUÊNCIA_CMD = "!frequência"
 
     private val logger = LoggerFactory.getLogger(PresenceCommand::class.java.name)
 
     private val presenceRepository = PresenceRepository()
 
     override fun start() {
-        logger.info("Iniciando o comando...")
+        logger.info("Iniciando o comando ${PresenceCommand::class.java.name}...")
         bot.setOnChatMessageListener(this)
+        logger.info("Comando ${PresenceCommand::class.java.name} inicializado!")
     }
 
     override fun stop() {
-        logger.info("Parando o comando...")
+        logger.info("Parando o comando ${PresenceCommand::class.java.name}...")
         bot.removeOnChatMessageListener(this)
+        logger.info("Comando ${PresenceCommand::class.java.name} finalizado!")
     }
 
     override fun onChatMessage(msg: ChatMessage) {
 
         when (msg.text) {
-            PRESENTE -> {
+            PRESENTE_CMD -> {
+                logger.info("Recebido um comando $PRESENTE_CMD de ${msg.user} em ${msg.date}")
                 savePresence(msg)
             }
-            FREQUENCIA, FREQUÊNCIA -> {
+            FREQUENCIA_CMD, FREQUÊNCIA_CMD -> {
+                logger.info("Recebido um comando $FREQUÊNCIA_CMD de ${msg.user} em ${msg.date}")
                 showFrequency(msg)
             }
         }

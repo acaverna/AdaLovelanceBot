@@ -32,9 +32,13 @@ fun main() {
 
     bot.connect()
 
+
     val commands = listOf(
         CommandFactory.getCommand(CommandType.TERMINAL_COMMAND, bot),
         CommandFactory.getCommand(CommandType.PRESENCE_COMMAND, bot),
+        CommandFactory.getCommand(CommandType.RANDOM_GRADE_COMMAND, bot),
+        CommandFactory.getCommand(CommandType.STATIC_TEXT_COMMAND, bot, "!morganna", "Morgio amor! morgioAmor morgioAmor morgioAmor"),
+        CommandFactory.getCommand(CommandType.TIMED_COMMAND, bot, "1", "/me A mãe ta on galerê!"),
         CommandFactory.getCommand(CommandType.TEST_COMMAND, bot)
     )
 
