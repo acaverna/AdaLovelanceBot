@@ -33,7 +33,9 @@ fun main() {
     bot.connect()
 
     val commands = listOf(
-        CommandFactory.getCommand(CommandType.TERMINAL_COMMAND, bot)
+        CommandFactory.getCommand(CommandType.TERMINAL_COMMAND, bot),
+        CommandFactory.getCommand(CommandType.PRESENCE_COMMAND, bot),
+        CommandFactory.getCommand(CommandType.TEST_COMMAND, bot)
     )
 
     commands.forEach {
