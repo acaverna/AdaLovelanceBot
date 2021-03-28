@@ -1,10 +1,9 @@
 package com.github.caverna.adalovelance
 
-import com.github.caverna.adalovelance.commands.Grade
-import com.github.caverna.adalovelance.commands.Presence
-import com.github.caverna.adalovelance.commands.ShowStreamer
-import com.github.caverna.adalovelance.commands.Terminal
-import com.github.caverna.adalovelance.twitch.TwitchAPI
+import com.github.caverna.adalovelance.bot.impl.AdalovelanceBot
+import com.github.caverna.adalovelance.commands.CommandFactory
+import com.github.caverna.adalovelance.commands.CommandType
+import com.github.caverna.adalovelance.commands.impl.TerminalCommand
 import org.h2.tools.Server
 import java.util.*
 import kotlin.time.ExperimentalTime
@@ -14,6 +13,7 @@ class App
 @ExperimentalTime
 fun main() {
 
+    // Criação do servidor H2
     Server.createTcpServer("-tcpPort", "9092", "-tcpAllowOthers").start()
 
     val props = Properties()
@@ -23,12 +23,21 @@ fun main() {
     val clientId = props.getProperty("BOT_TWITCH_CLIENTID")
     val secretId = props.getProperty("BOT_TWITCH_SECRETID")
 
-    TwitchAPI(channel, token, clientId, secretId).apply{
-        setOnChatMessageListener(Terminal())
-        setOnChatMessageListener(Grade())
-        setOnChatMessageListener(Presence())
-        setOnChatMessageListener(ShowStreamer())
-    }
+    val bot = AdalovelanceBot.Builder()
+        .setChannel(channel)
+        .setToken(token)
+        .setClientId(clientId)
+        .setSecretId(secretId)
+        .build()
 
+    bot.connect()
+
+    val commands = listOf(
+        CommandFactory.getCommand(CommandType.TERMINAL_COMMAND, bot)
+    )
+
+    commands.forEach {
+        it.start()
+    }
 
 }
