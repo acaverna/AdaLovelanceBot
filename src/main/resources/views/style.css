@@ -1,0 +1,16 @@
+.menu_button {
+    -fx-background-color : #5854BF;
+    -fx-background-radius: 30 0 0 30;
+    -fx-font-size: 20;
+    -fx-alignment: baseline-left;
+    -fx-padding: 0 0 0 30px;
+    -fx-text-fill: white;
+}
+.menu_button_exit {
+    -fx-background-color : #D91E50;
+    -fx-background-radius: 30 0 0 30;
+    -fx-font-size: 20;
+    -fx-alignment: baseline-left;
+    -fx-padding: 0 0 0 30px;
+    -fx-text-fill: white;
+}

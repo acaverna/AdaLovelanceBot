@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.caverna.adalovelance.controllers.MainController">
+   <children>
+      <BorderPane fx:id="mainLayoutContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+         <left>
+            <VBox prefHeight="720.0" prefWidth="320.0" style="-fx-background-color: #243e73;" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Text fill="WHITE" layoutX="56.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ada Lovelance Bot">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="65.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/ada.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Button fx:id="mainMenuChat" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="75.0" styleClass="menu_button" stylesheets="@style.css" text="Chat">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="COMMENT" nodeOrientation="LEFT_TO_RIGHT" textAlignment="CENTER" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="mainMenuCommands" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="75.0" styleClass="menu_button" stylesheets="@style.css" text="Comandos">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="EXCLAMATION" nodeOrientation="LEFT_TO_RIGHT" textAlignment="CENTER" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="mainMenuTimers" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="75.0" styleClass="menu_button" stylesheets="@style.css" text="Temporizador">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="HOURGLASS_HALF" nodeOrientation="LEFT_TO_RIGHT" textAlignment="CENTER" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="mainMenuSettings" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="75.0" styleClass="menu_button" stylesheets="@style.css" text="Configurações">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="COGS" nodeOrientation="LEFT_TO_RIGHT" textAlignment="CENTER" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="mainMenuModules" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="75.0" styleClass="menu_button" stylesheets="@style.css" text="Módulos">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="CUBES" nodeOrientation="LEFT_TO_RIGHT" textAlignment="CENTER" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="mainMenuExit" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="75.0" styleClass="menu_button_exit" stylesheets="@style.css" text="Sair">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="FONT" nodeOrientation="LEFT_TO_RIGHT" textAlignment="CENTER" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <AnchorPane prefHeight="720.0" prefWidth="960.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

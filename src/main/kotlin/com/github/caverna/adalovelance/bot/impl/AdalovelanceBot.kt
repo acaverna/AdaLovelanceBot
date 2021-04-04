@@ -1,5 +1,6 @@
 package com.github.caverna.adalovelance.bot.impl
 
+import com.github.caverna.adalovelance.App
 import com.github.caverna.adalovelance.bot.IBot
 import com.github.caverna.adalovelance.bot.OnChatMessageListener
 import com.github.caverna.adalovelance.model.ChatMessage
@@ -11,19 +12,33 @@ import com.github.twitch4j.chat.events.channel.ChannelMessageEvent
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.slf4j.LoggerFactory
+import java.util.*
 
-class AdalovelanceBot private constructor(
-    private val channel: String?,
-    private val token: String?,
-    private val clientId: String?,
-    private val secretId: String?
-) : IBot {
+object AdalovelanceBot : IBot {
+
+    private val channel: String
+    private val token: String
+    private val clientId: String
+    private val secretId: String
 
     private lateinit var twitchClient: TwitchClient
     private val chatMessageListeners = mutableListOf<OnChatMessageListener>()
     private val logger = LoggerFactory.getLogger(AdalovelanceBot::class.java.name)
 
+    init {
+
+        val props = Properties()
+        props.load(App::class.java.getResourceAsStream("/twitch.properties"))
+
+        this.channel = props.getProperty("BOT_TWITCH_CHANNEL")
+        this.token = props.getProperty("BOT_TWITCH_TOKEN")
+        this.clientId = props.getProperty("BOT_TWITCH_CLIENTID")
+        this.secretId = props.getProperty("BOT_TWITCH_SECRETID")
+
+    }
+
     fun connect() {
+
         val credential = OAuth2Credential("twitch", token)
         this.twitchClient = TwitchClientBuilder.builder()
             .withEnableChat(true)
@@ -65,19 +80,6 @@ class AdalovelanceBot private constructor(
 
     override fun removeOnChatMessageListener(listener: OnChatMessageListener) {
         this.chatMessageListeners.remove(listener)
-    }
-
-    data class Builder(
-        var channel: String? = null,
-        var token: String? = null,
-        var clientId: String? = null,
-        var secretId: String? = null
-    ) {
-        fun setChannel(channel: String) = apply { this.channel = channel }
-        fun setToken(token: String) = apply { this.token = token }
-        fun setClientId(clientId: String) = apply { this.clientId = clientId }
-        fun setSecretId(secretId: String) = apply { this.secretId = secretId }
-        fun build() = AdalovelanceBot(channel, token, clientId, secretId)
     }
 
 }
