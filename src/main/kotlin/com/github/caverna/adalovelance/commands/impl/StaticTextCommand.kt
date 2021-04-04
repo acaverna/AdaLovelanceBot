@@ -6,26 +6,30 @@ import com.github.caverna.adalovelance.commands.BaseCommand
 import com.github.caverna.adalovelance.model.ChatMessage
 import org.slf4j.LoggerFactory
 
-class StaticTextCommand(bot:IBot, vararg args:String):BaseCommand(bot), OnChatMessageListener {
+class StaticTextCommand(vararg args: String) : BaseCommand(), OnChatMessageListener {
 
     private val command = args[0]
     private val text = args[1]
 
     private val logger = LoggerFactory.getLogger(StaticTextCommand::class.java.name)
-    override fun start() {
+    override fun start(bot: IBot) {
+        super.start(bot)
+
         logger.info("Iniciando o comando ${StaticTextCommand::class.java.name}...")
         bot.setOnChatMessageListener(this)
         logger.info("Comando ${StaticTextCommand::class.java.name} inicializado!")
     }
 
     override fun stop() {
+        super.stop()
+
         logger.info("Parando o comando ${StaticTextCommand::class.java.name}...")
         bot.removeOnChatMessageListener(this)
         logger.info("Comando ${StaticTextCommand::class.java.name} finalizado!")
     }
 
     override fun onChatMessage(msg: ChatMessage) {
-        when(msg.text){
+        when (msg.text) {
             command -> {
                 bot.sendMessage(text)
             }

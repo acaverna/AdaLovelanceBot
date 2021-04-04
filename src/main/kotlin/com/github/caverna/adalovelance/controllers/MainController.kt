@@ -1,6 +1,7 @@
 package com.github.caverna.adalovelance.controllers
 
 import com.github.caverna.adalovelance.App
+import com.github.caverna.adalovelance.bot.impl.AdalovelanceBot
 import com.github.caverna.adalovelance.util.UpdateUI
 import javafx.event.EventHandler
 import javafx.fxml.FXML
@@ -14,8 +15,11 @@ import javafx.scene.input.MouseEvent
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.Pane
 import javafx.stage.Stage
+import kotlin.system.exitProcess
 
 class MainController : EventHandler<MouseEvent> {
+
+    private val EXIT_SUCCESS = 0
 
     private val CHAT_FXML_PATH = "/views/chat.fxml"
     private val COMMANDS_FXML_PATH = "/views/commands.fxml"
@@ -102,6 +106,7 @@ class MainController : EventHandler<MouseEvent> {
         val result = alert.showAndWait()
         if (result.get() == buttonExit) {
             ((event?.source as Button).scene.window as Stage).close()
+            exitProcess(EXIT_SUCCESS)
         }
     }
 

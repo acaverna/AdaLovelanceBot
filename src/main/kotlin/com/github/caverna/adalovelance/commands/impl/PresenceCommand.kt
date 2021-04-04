@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory
 import java.text.SimpleDateFormat
 import java.util.*
 
-class PresenceCommand(bot: IBot) : BaseCommand(bot), OnChatMessageListener {
+class PresenceCommand() : BaseCommand(), OnChatMessageListener {
 
     private val PRESENTE_CMD = "!presente"
     private val FREQUENCIA_CMD = "!frequencia"
@@ -20,13 +20,18 @@ class PresenceCommand(bot: IBot) : BaseCommand(bot), OnChatMessageListener {
 
     private val presenceRepository = PresenceRepository()
 
-    override fun start() {
+    override fun start(bot: IBot) {
+        super.start(bot)
+
         logger.info("Iniciando o comando ${PresenceCommand::class.java.name}...")
-        bot.setOnChatMessageListener(this)
+        this.bot.setOnChatMessageListener(this)
         logger.info("Comando ${PresenceCommand::class.java.name} inicializado!")
+
     }
 
     override fun stop() {
+        super.stop()
+
         logger.info("Parando o comando ${PresenceCommand::class.java.name}...")
         bot.removeOnChatMessageListener(this)
         logger.info("Comando ${PresenceCommand::class.java.name} finalizado!")

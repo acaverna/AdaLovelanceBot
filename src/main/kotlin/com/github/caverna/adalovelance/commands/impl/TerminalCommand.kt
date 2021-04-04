@@ -6,17 +6,21 @@ import com.github.caverna.adalovelance.commands.BaseCommand
 import com.github.caverna.adalovelance.model.ChatMessage
 import org.slf4j.LoggerFactory
 
-class TerminalCommand(bot: IBot) : BaseCommand(bot), OnChatMessageListener {
+class TerminalCommand() : BaseCommand(), OnChatMessageListener {
 
     private val logger = LoggerFactory.getLogger(TerminalCommand::class.java.name)
 
-    override fun start() {
+    override fun start(bot: IBot) {
+        super.start(bot)
+
         logger.info("Iniciando o comando ${TerminalCommand::class.java.name}...")
         bot.setOnChatMessageListener(this)
         logger.info("Comando ${TerminalCommand::class.java.name} inicializado!")
     }
 
     override fun stop() {
+        super.stop()
+
         logger.info("Parando o comando ${TerminalCommand::class.java.name}...")
         bot.removeOnChatMessageListener(this)
         logger.info("Comando ${TerminalCommand::class.java.name} finalizado!")

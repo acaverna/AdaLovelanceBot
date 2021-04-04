@@ -2,12 +2,18 @@ package com.github.caverna.adalovelance.commands
 
 import com.github.caverna.adalovelance.bot.IBot
 
-abstract class BaseCommand(val bot: IBot, vararg args:String) {
+abstract class BaseCommand(vararg args:String) {
 
+    lateinit var bot:IBot
     var isStarted = false
 
-    abstract fun start()
+    open fun start(bot: IBot){
+        if (isStarted) throw Exception("Comando já inicializado!")
+        this.bot = bot
+    }
 
-    abstract fun stop()
+    open fun stop() {
+        if (!isStarted) throw Exception("Comando não inicializado")
+    }
 
 }

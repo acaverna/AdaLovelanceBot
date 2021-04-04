@@ -3,6 +3,7 @@ package com.github.caverna.adalovelance.bot.impl
 import com.github.caverna.adalovelance.App
 import com.github.caverna.adalovelance.bot.IBot
 import com.github.caverna.adalovelance.bot.OnChatMessageListener
+import com.github.caverna.adalovelance.commands.BaseCommand
 import com.github.caverna.adalovelance.model.ChatMessage
 import com.github.philippheuer.credentialmanager.domain.OAuth2Credential
 import com.github.twitch4j.TwitchClient
@@ -21,6 +22,8 @@ object AdalovelanceBot : IBot {
     private val clientId: String
     private val secretId: String
 
+    private val commands:MutableList<BaseCommand>
+
     private lateinit var twitchClient: TwitchClient
     private val chatMessageListeners = mutableListOf<OnChatMessageListener>()
     private val logger = LoggerFactory.getLogger(AdalovelanceBot::class.java.name)
@@ -34,6 +37,8 @@ object AdalovelanceBot : IBot {
         this.token = props.getProperty("BOT_TWITCH_TOKEN")
         this.clientId = props.getProperty("BOT_TWITCH_CLIENTID")
         this.secretId = props.getProperty("BOT_TWITCH_SECRETID")
+
+        this.commands = mutableListOf()
 
     }
 
@@ -68,6 +73,16 @@ object AdalovelanceBot : IBot {
 
         logger.info("AdalovelanceBot está conectada a Twicth no canal $channel!")
 
+    }
+
+    fun addCommand(cmd:BaseCommand){
+        if(!cmd.isStarted) cmd.start(this)
+        this.commands.add(cmd)
+    }
+
+    fun removeCommand(cmd:BaseCommand){
+        if(cmd.isStarted) cmd.stop()
+        this.commands.remove(cmd)
     }
 
     override fun sendMessage(msg: String) {

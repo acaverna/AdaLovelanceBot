@@ -7,19 +7,23 @@ import com.github.caverna.adalovelance.model.ChatMessage
 import org.slf4j.LoggerFactory
 import kotlin.random.Random
 
-class RandomGradeCommand(bot:IBot):BaseCommand(bot), OnChatMessageListener {
+class RandomGradeCommand():BaseCommand(), OnChatMessageListener {
 
     private val NOTA_CMD = "!nota"
 
     private val logger = LoggerFactory.getLogger(RandomGradeCommand::class.java.name)
 
-    override fun start() {
+    override fun start(bot:IBot) {
+        super.start(bot)
+
         logger.info("Iniciando o comando ${RandomGradeCommand::class.java.name}...")
         bot.setOnChatMessageListener(this)
         logger.info("Comando ${RandomGradeCommand::class.java.name} inicializado!")
     }
 
     override fun stop() {
+        super.stop()
+
         logger.info("Parando o comando ${RandomGradeCommand::class.java.name}...")
         bot.removeOnChatMessageListener(this)
         logger.info("Comando ${RandomGradeCommand::class.java.name} finalizado!")

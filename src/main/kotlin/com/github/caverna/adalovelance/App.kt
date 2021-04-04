@@ -7,55 +7,61 @@ import javafx.application.Application
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import javafx.scene.Scene
+import javafx.scene.image.Image
 import javafx.stage.Stage
 import javafx.stage.StageStyle
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.h2.tools.Server
 import java.util.*
+import kotlin.system.exitProcess
 
 
 class App : Application() {
 
+    private val EXIT_SUCCESS = 0
+
     override fun start(primaryStage: Stage) {
 
-        val root:Parent = FXMLLoader.load(App::class.java.getResource("/views/main.fxml"))
+        val root: Parent = FXMLLoader.load(App::class.java.getResource("/views/main.fxml"))
 
         val scene = Scene(root, 1280.0, 720.0)
         primaryStage.scene = scene
         primaryStage.isResizable = false
+        primaryStage.title = "Ada Lovelance Bot"
+        primaryStage.icons.add(Image(App::class.java.getResourceAsStream("/views/img/ada.png")));
+
+        primaryStage.setOnCloseRequest {
+            primaryStage.close()
+            exitProcess(EXIT_SUCCESS)
+        }
+
         primaryStage.show()
-
-        GlobalScope.launch {
-            startBot()
-        }
-
-    }
-
-    private fun startBot(){
-        // Criação do servidor H2
-        Server.createTcpServer("-tcpPort", "9092", "-tcpAllowOthers").start()
-
-        AdalovelanceBot.connect()
-        
-        val commands = listOf(
-            CommandFactory.getCommand(CommandType.TERMINAL_COMMAND, AdalovelanceBot),
-            CommandFactory.getCommand(CommandType.PRESENCE_COMMAND, AdalovelanceBot),
-            CommandFactory.getCommand(CommandType.RANDOM_GRADE_COMMAND, AdalovelanceBot),
-            CommandFactory.getCommand(CommandType.STATIC_TEXT_COMMAND, AdalovelanceBot, "!morganna", "Morgio amor! morgioAmor morgioAmor morgioAmor"),
-            CommandFactory.getCommand(CommandType.TIMED_COMMAND, AdalovelanceBot, "30", "/me A mãe ta on galerê!"),
-            CommandFactory.getCommand(CommandType.TEST_COMMAND, AdalovelanceBot)
-        )
-
-        commands.forEach {
-            it.start()
-        }
 
     }
 }
 
 
 fun main() {
+
+    // Criação do servidor H2
+    Server.createTcpServer("-tcpPort", "9092", "-tcpAllowOthers").start()
+
+    AdalovelanceBot.connect()
+
+
+    AdalovelanceBot.addCommand(CommandFactory.getCommand(CommandType.TERMINAL_COMMAND))
+    AdalovelanceBot.addCommand(CommandFactory.getCommand(CommandType.PRESENCE_COMMAND))
+    AdalovelanceBot.addCommand(CommandFactory.getCommand(CommandType.RANDOM_GRADE_COMMAND))
+    AdalovelanceBot.addCommand(
+        CommandFactory.getCommand(
+            CommandType.STATIC_TEXT_COMMAND,
+            "!morganna",
+            "Morgio amor! morgioAmor morgioAmor morgioAmor"
+        )
+    )
+    AdalovelanceBot.addCommand(CommandFactory.getCommand(CommandType.TIMED_COMMAND, "30", "/me A mãe ta on galerê!"))
+    AdalovelanceBot.addCommand(CommandFactory.getCommand(CommandType.TEST_COMMAND))
 
     Application.launch(App::class.java)
 
