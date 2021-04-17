@@ -35,8 +35,8 @@ object AdalovelanceBot : IBot {
 
         this.channel = props.getProperty("BOT_TWITCH_CHANNEL")
         this.token = props.getProperty("BOT_TWITCH_TOKEN")
-        this.clientId = props.getProperty("BOT_TWITCH_CLIENTID")
-        this.secretId = props.getProperty("BOT_TWITCH_SECRETID")
+        this.clientId = props.getProperty("BOT_TWITCH_CLIENT_ID")
+        this.secretId = props.getProperty("BOT_TWITCH_SECRET_ID")
 
         this.commands = mutableListOf()
 
