@@ -21,11 +21,7 @@ class MainController : EventHandler<MouseEvent> {
 
     private val EXIT_SUCCESS = 0
 
-    private val CHAT_FXML_PATH = "/views/chat.fxml"
-    private val COMMANDS_FXML_PATH = "/views/commands.fxml"
-    private val TIMERS_FXML_PATH = "/views/timers.fxml"
-    private val SETTINGS_FXML_PATH = "/views/settings.fxml"
-    private val MODULES_FXML_PATH = "/views/modules.fxml"
+
 
     @FXML
     private lateinit var mainMenuChat: Button
@@ -58,7 +54,7 @@ class MainController : EventHandler<MouseEvent> {
         mainMenuModules.onMouseClicked = this
         mainMenuExit.onMouseClicked = this
 
-        UpdateUI.update(mainLayoutContainer, CHAT_FXML_PATH)
+        UpdateUI.update(mainLayoutContainer, UpdateUI.SCENE.CHAT)
 
     }
 
@@ -67,23 +63,23 @@ class MainController : EventHandler<MouseEvent> {
         when(event?.source){
 
             mainMenuChat -> {
-                UpdateUI.update(mainLayoutContainer, CHAT_FXML_PATH)
+                UpdateUI.update(mainLayoutContainer, UpdateUI.SCENE.CHAT)
             }
 
             mainMenuCommands -> {
-                UpdateUI.update(mainLayoutContainer, COMMANDS_FXML_PATH)
+                UpdateUI.update(mainLayoutContainer, UpdateUI.SCENE.COMMAND)
             }
 
             mainMenuTimers ->{
-                UpdateUI.update(mainLayoutContainer, TIMERS_FXML_PATH)
+                UpdateUI.update(mainLayoutContainer, UpdateUI.SCENE.TIMERS)
             }
 
             mainMenuSettings ->{
-                UpdateUI.update(mainLayoutContainer, SETTINGS_FXML_PATH)
+                UpdateUI.update(mainLayoutContainer, UpdateUI.SCENE.SETTINGS)
             }
 
             mainMenuModules ->{
-                UpdateUI.update(mainLayoutContainer, MODULES_FXML_PATH)
+                UpdateUI.update(mainLayoutContainer, UpdateUI.SCENE.MODULES)
             }
 
             mainMenuExit -> {

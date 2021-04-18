@@ -5,6 +5,8 @@ import com.github.caverna.adalovelance.bot.OnChatMessageListener
 import com.github.caverna.adalovelance.bot.impl.AdalovelanceBot
 import com.github.caverna.adalovelance.commands.BaseCommand
 import com.github.caverna.adalovelance.model.ChatMessage
+import javafx.beans.value.ChangeListener
+import javafx.beans.value.ObservableValue
 import javafx.fxml.FXML
 import javafx.scene.control.TextArea
 import javafx.scene.text.Text

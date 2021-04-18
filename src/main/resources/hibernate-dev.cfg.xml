@@ -25,6 +25,7 @@
         <property name="hbm2ddl.auto">create-drop</property>
 
         <mapping class="com.github.caverna.adalovelance.model.Presence" />
+        <mapping class="com.github.caverna.adalovelance.model.Command" />
 
     </session-factory>
 </hibernate-configuration>
