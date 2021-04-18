@@ -5,11 +5,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/15" >
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutY="51.0" prefHeight="125.0" prefWidth="960.0" style="-fx-background-color: #aad9a3;">
          <children>
-            <Text fill="WHITE" layoutX="50.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Configurações" wrappingWidth="331.35546875">
+            <Text fill="WHITE" layoutX="50.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Configurações" wrappingWidth="358.35546875">
                <font>
                   <Font size="48.0" />
                </font>

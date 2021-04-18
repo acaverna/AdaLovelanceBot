@@ -4,7 +4,10 @@ import com.github.caverna.adalovelance.App
 import com.github.caverna.adalovelance.bot.IBot
 import com.github.caverna.adalovelance.bot.OnChatMessageListener
 import com.github.caverna.adalovelance.commands.BaseCommand
+import com.github.caverna.adalovelance.commands.CommandFactory
+import com.github.caverna.adalovelance.commands.CommandType
 import com.github.caverna.adalovelance.model.ChatMessage
+import com.github.caverna.adalovelance.persistence.StaticCommandRepository
 import com.github.philippheuer.credentialmanager.domain.OAuth2Credential
 import com.github.twitch4j.TwitchClient
 import com.github.twitch4j.TwitchClientBuilder
@@ -22,11 +25,15 @@ object AdalovelanceBot : IBot {
     private val clientId: String
     private val secretId: String
 
-    private val commands:MutableList<BaseCommand>
+    private val commands:MutableMap<String, BaseCommand>
 
     private lateinit var twitchClient: TwitchClient
+
+    private val staticCommandRepository = StaticCommandRepository()
     private val chatMessageListeners = mutableListOf<OnChatMessageListener>()
     private val logger = LoggerFactory.getLogger(AdalovelanceBot::class.java.name)
+
+    val STREAMER_NAME:String
 
     init {
 
@@ -37,8 +44,9 @@ object AdalovelanceBot : IBot {
         this.token = props.getProperty("BOT_TWITCH_TOKEN")
         this.clientId = props.getProperty("BOT_TWITCH_CLIENT_ID")
         this.secretId = props.getProperty("BOT_TWITCH_SECRET_ID")
+        this.STREAMER_NAME = channel
 
-        this.commands = mutableListOf()
+        this.commands = mutableMapOf()
 
     }
 
@@ -75,14 +83,46 @@ object AdalovelanceBot : IBot {
 
     }
 
-    fun addCommand(cmd:BaseCommand){
-        if(!cmd.isStarted) cmd.start(this)
-        this.commands.add(cmd)
+    fun addCommand(cmd:String, obj:BaseCommand){
+        if(!this.commands.containsKey(cmd)){
+            if(!obj.isStarted) obj.start(this)
+            this.commands[cmd] = obj
+        }
     }
 
-    fun removeCommand(cmd:BaseCommand){
-        if(cmd.isStarted) cmd.stop()
-        this.commands.remove(cmd)
+    fun removeCommand(cmd:String){
+        if(this.commands.containsKey(cmd)){
+            val obj = this.commands[cmd]!!
+            if(obj.isStarted) obj.stop()
+            this.commands.remove(cmd)
+        }
+    }
+
+    fun loadCommandsFromDatabase(){
+        println("Iniciando o processo de carregamento dos comandos...")
+
+        this.commands.forEach{
+            it.value.stop()
+        }
+
+        this.commands.clear()
+        this.addCommand("-1", CommandFactory.getCommand(CommandType.TERMINAL_COMMAND))
+        this.loadStaticCommandsFromDatabase()
+        println("Processo finalizado!")
+    }
+
+    private fun loadStaticCommandsFromDatabase(){
+        staticCommandRepository.findAll().forEach {
+            this.addCommand(
+                it.command,
+                CommandFactory.getCommand(
+                    CommandType.STATIC_TEXT_COMMAND,
+                    it.command,
+                    it.text,
+                    it.isStreamerOnly.toString()
+                )
+            )
+        }
     }
 
     override fun sendMessage(msg: String) {

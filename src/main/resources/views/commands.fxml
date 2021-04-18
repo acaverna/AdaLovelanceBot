@@ -1,25 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/15" >
-   <children>
-      <Pane layoutY="51.0" prefHeight="125.0" prefWidth="960.0" style="-fx-background-color: #aad9a3;">
-         <children>
-            <Text fill="WHITE" layoutX="50.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comandos" wrappingWidth="293.35546875">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" layoutX="50.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/home/comandos">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Text>
-         </children>
-      </Pane>
-   </children>
+<AnchorPane fx:id="cmdAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.caverna.adalovelance.controllers.CommandController">
+    <children>
+        <Pane layoutY="51.0" prefHeight="125.0" prefWidth="960.0" style="-fx-background-color: #aad9a3;">
+            <children>
+                <Text fill="WHITE" layoutX="50.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comandos" wrappingWidth="293.35546875">
+                    <font>
+                        <Font size="48.0" />
+                    </font>
+                </Text>
+                <Text fill="WHITE" layoutX="50.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/home/comandos">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Text>
+            </children>
+        </Pane>
+        <TableView fx:id="cmdCommandTable" layoutX="10.0" layoutY="301.0" prefHeight="405.0" prefWidth="936.0">
+            <columns>
+                <TableColumn fx:id="cmdTableColumnID" editable="false" prefWidth="48.0" resizable="false" text="ID" />
+                <TableColumn fx:id="cmdTableColumnCommand" editable="false" prefWidth="174.0" text="Comando" />
+                <TableColumn fx:id="cmdTableColumnText" editable="false" prefWidth="308.0" resizable="false" text="Texto" />
+                <TableColumn fx:id="cmdTableColumnDescription" editable="false" prefWidth="317.0" resizable="false" text="Descrição" />
+            <TableColumn fx:id="cmdTableColumnStreamerOnly" editable="false" prefWidth="84.0" resizable="false" text="Exclusivo" />
+            </columns>
+        </TableView>
+      <TextField fx:id="cmdID" disable="true" editable="false" layoutX="14.0" layoutY="221.0" prefHeight="24.0" prefWidth="48.0" />
+      <Label layoutX="14.0" layoutY="205.0" text="ID" />
+        <TextField fx:id="cmdCommand" layoutX="72.0" layoutY="221.0" prefHeight="24.0" prefWidth="109.0" />
+        <Label layoutX="72.0" layoutY="205.0" text="Comando" />
+        <TextField fx:id="cmdText" layoutX="192.0" layoutY="221.0" prefHeight="24.0" prefWidth="275.0" />
+        <Label layoutX="192.0" layoutY="205.0" text="Texto" />
+        <TextField fx:id="cmdDescription" layoutX="478.0" layoutY="221.0" prefHeight="24.0" prefWidth="275.0" />
+        <Label layoutX="480.0" layoutY="205.0" text="Descrição" />
+        <Button fx:id="cmdDelete" alignment="CENTER" contentDisplay="CENTER" layoutX="846.0" layoutY="253.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" styleClass="command_button_delete" stylesheets="@style.css" text="Excluir" />
+        <Button fx:id="cmdSave" alignment="CENTER" contentDisplay="CENTER" layoutX="736.0" layoutY="253.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" styleClass="command_button_save" stylesheets="@style.css" text="Salvar" />
+      <Button fx:id="cmdClear" layoutX="628.0" layoutY="255.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" styleClass="command_button_clear" stylesheets="@style.css" text="Limpar" />
+      <CheckBox fx:id="cmdIsStreamerOnly" layoutX="763.0" layoutY="224.0" mnemonicParsing="false" text="Exclusivo do Streamer" />
+    </children>
 </AnchorPane>

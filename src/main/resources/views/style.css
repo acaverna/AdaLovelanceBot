@@ -14,3 +14,23 @@
     -fx-padding: 0 0 0 30px;
     -fx-text-fill: white;
 }
+
+.command_button_clear {
+    -fx-font-size: 20;
+    -fx-alignment: center;
+    -fx-text-fill: black;
+}
+
+.command_button_save {
+    -fx-background-color : #5854BF;
+    -fx-font-size: 20;
+    -fx-alignment: center;
+    -fx-text-fill: white;
+}
+
+.command_button_delete {
+    -fx-background-color : #D91E50;
+    -fx-font-size: 20;
+    -fx-alignment: center;
+    -fx-text-fill: white;
+}

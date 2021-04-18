@@ -26,7 +26,7 @@ abstract class BaseRepository<T> (val clazz:Class<T>){
     fun find(id:Long):T{
         val session = this.sessionFactory.openSession()
         session.beginTransaction()
-        val presence:T =  clazz.cast(session.find(Presence::class.java, id))
+        val presence:T =  session.createQuery("from ${clazz.simpleName} as t where t.id = $id").uniqueResult() as T
         session.transaction.commit()
         session.close()
 
@@ -37,7 +37,7 @@ abstract class BaseRepository<T> (val clazz:Class<T>){
         val session = this.sessionFactory.openSession()
         session.beginTransaction()
 
-        val presences:List<T> = session.createQuery("SELECT t FROM ${clazz.simpleName} t").resultList as List<T>
+        val presences:List<T> = session.createQuery("from ${clazz.simpleName} as t").resultList as List<T>
 
         session.transaction.commit()
         session.close()

@@ -41,7 +41,6 @@ class App : Application() {
     }
 }
 
-
 fun main() {
 
     // Criação do servidor H2
@@ -49,19 +48,13 @@ fun main() {
 
     AdalovelanceBot.connect()
 
+    AdalovelanceBot.loadCommandsFromDatabase()
 
-    AdalovelanceBot.addCommand(CommandFactory.getCommand(CommandType.TERMINAL_COMMAND))
-    AdalovelanceBot.addCommand(CommandFactory.getCommand(CommandType.PRESENCE_COMMAND))
-    AdalovelanceBot.addCommand(CommandFactory.getCommand(CommandType.RANDOM_GRADE_COMMAND))
-    AdalovelanceBot.addCommand(
-        CommandFactory.getCommand(
-            CommandType.STATIC_TEXT_COMMAND,
-            "!morganna",
-            "Morgio amor! morgioAmor morgioAmor morgioAmor"
-        )
-    )
-    AdalovelanceBot.addCommand(CommandFactory.getCommand(CommandType.TIMED_COMMAND, "30", "/me A mãe ta on galerê!"))
-    AdalovelanceBot.addCommand(CommandFactory.getCommand(CommandType.TEST_COMMAND))
+    //AdalovelanceBot.addCommand("2", CommandFactory.getCommand(CommandType.PRESENCE_COMMAND))
+    //AdalovelanceBot.addCommand("3", CommandFactory.getCommand(CommandType.RANDOM_GRADE_COMMAND))
+
+    //AdalovelanceBot.addCommand("4", CommandFactory.getCommand(CommandType.TIMED_COMMAND, "30", "/me A mãe ta on galerê!"))
+    //AdalovelanceBot.addCommand("5", CommandFactory.getCommand(CommandType.TEST_COMMAND))
 
     Application.launch(App::class.java)
 

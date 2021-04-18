@@ -26,7 +26,7 @@ class ChatController : BaseCommand(), OnChatMessageListener {
 
     @FXML
     fun initialize() {
-        AdalovelanceBot.addCommand(this)
+        AdalovelanceBot.addCommand("ChatController", this)
 
         val date = Calendar.getInstance()
         val year = date.get(Calendar.YEAR)

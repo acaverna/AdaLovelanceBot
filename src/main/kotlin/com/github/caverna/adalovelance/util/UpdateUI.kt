@@ -43,7 +43,7 @@ object UpdateUI {
             SCENE.TIMERS -> {
                 if (!scenesLoader.containsKey(scene)) {
                     scenesLoader[scene] =
-                        FXMLLoader.load(UpdateUI::class.java.getResource(COMMANDS_FXML_PATH)) as Parent
+                        FXMLLoader.load(UpdateUI::class.java.getResource(TIMERS_FXML_PATH)) as Parent
                 }
                 scenesLoader[scene]!!
             }

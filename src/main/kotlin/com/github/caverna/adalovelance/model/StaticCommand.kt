@@ -3,8 +3,8 @@ package com.github.caverna.adalovelance.model
 import javax.persistence.*
 
 @Entity
-@Table(name="commands")
-data class Command (
+@Table(name="static_commands")
+data class StaticCommand (
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id:Long? = null,
@@ -13,4 +13,6 @@ data class Command (
     @Column(nullable = false)
     val text:String,
     val description:String,
+    @Column(name="is_streamer_only")
+    val isStreamerOnly:Boolean = false
 )

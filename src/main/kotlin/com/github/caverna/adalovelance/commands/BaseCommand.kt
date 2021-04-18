@@ -10,10 +10,12 @@ abstract class BaseCommand(vararg args:String) {
     open fun start(bot: IBot){
         if (isStarted) throw Exception("Comando já inicializado!")
         this.bot = bot
+        this.isStarted = true
     }
 
     open fun stop() {
         if (!isStarted) throw Exception("Comando não inicializado")
+        this.isStarted = false
     }
 
 }
