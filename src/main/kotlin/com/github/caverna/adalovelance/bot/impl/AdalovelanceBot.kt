@@ -7,6 +7,7 @@ import com.github.caverna.adalovelance.commands.BaseCommand
 import com.github.caverna.adalovelance.commands.CommandFactory
 import com.github.caverna.adalovelance.commands.CommandType
 import com.github.caverna.adalovelance.model.ChatMessage
+import com.github.caverna.adalovelance.persistence.SoundCommandRepository
 import com.github.caverna.adalovelance.persistence.StaticCommandRepository
 import com.github.caverna.adalovelance.persistence.TimerCommandRepository
 import com.github.philippheuer.credentialmanager.domain.OAuth2Credential
@@ -26,16 +27,17 @@ object AdalovelanceBot : IBot {
     private val clientId: String
     private val secretId: String
 
-    private val commands:MutableMap<String, BaseCommand>
+    private val commands: MutableMap<String, BaseCommand>
 
     private lateinit var twitchClient: TwitchClient
 
     private val staticCommandRepository = StaticCommandRepository()
     private val timerCommandRepository = TimerCommandRepository()
+    private val soundCommandRepository = SoundCommandRepository()
     private val chatMessageListeners = mutableListOf<OnChatMessageListener>()
     private val logger = LoggerFactory.getLogger(AdalovelanceBot::class.java.name)
 
-    val STREAMER_NAME:String
+    val STREAMER_NAME: String
 
     init {
 
@@ -85,25 +87,25 @@ object AdalovelanceBot : IBot {
 
     }
 
-    fun addCommand(cmd:String, obj:BaseCommand){
-        if(!this.commands.containsKey(cmd)){
-            if(!obj.isStarted) obj.start(this)
+    fun addCommand(cmd: String, obj: BaseCommand) {
+        if (!this.commands.containsKey(cmd)) {
+            if (!obj.isStarted) obj.start(this)
             this.commands[cmd] = obj
         }
     }
 
-    fun removeCommand(cmd:String){
-        if(this.commands.containsKey(cmd)){
+    fun removeCommand(cmd: String) {
+        if (this.commands.containsKey(cmd)) {
             val obj = this.commands[cmd]!!
-            if(obj.isStarted) obj.stop()
+            if (obj.isStarted) obj.stop()
             this.commands.remove(cmd)
         }
     }
 
-    fun loadCommandsFromDatabase(){
+    fun loadCommandsFromDatabase() {
         println("Iniciando o processo de carregamento dos comandos...")
 
-        this.commands.forEach{
+        this.commands.forEach {
             it.value.stop()
         }
 
@@ -111,10 +113,24 @@ object AdalovelanceBot : IBot {
         this.addCommand(UUID.randomUUID().toString(), CommandFactory.getCommand(CommandType.TERMINAL_COMMAND))
         this.loadStaticCommandsFromDatabase()
         this.loadTimerCommandsFromDatabase()
+        this.loadSoundCommandsFromDatabase()
         println("Processo finalizado!")
     }
 
-    private fun loadTimerCommandsFromDatabase(){
+    private fun loadSoundCommandsFromDatabase() {
+        soundCommandRepository.findAll().forEach {
+            this.addCommand(
+                it.command,
+                CommandFactory.getCommand(
+                    CommandType.SOUND_COMMAND,
+                    it.command,
+                    it.path
+                )
+            )
+        }
+    }
+
+    private fun loadTimerCommandsFromDatabase() {
         timerCommandRepository.findAll().forEach {
             this.addCommand(
                 UUID.randomUUID().toString(),
@@ -127,7 +143,7 @@ object AdalovelanceBot : IBot {
         }
     }
 
-    private fun loadStaticCommandsFromDatabase(){
+    private fun loadStaticCommandsFromDatabase() {
         staticCommandRepository.findAll().forEach {
             this.addCommand(
                 it.command,

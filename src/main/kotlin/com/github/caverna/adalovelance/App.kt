@@ -1,6 +1,8 @@
 package com.github.caverna.adalovelance
 
 import com.github.caverna.adalovelance.bot.impl.AdalovelanceBot
+import com.github.caverna.adalovelance.commands.CommandFactory
+import com.github.caverna.adalovelance.commands.CommandType
 import javafx.application.Application
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
@@ -39,7 +41,6 @@ fun main() {
     AdalovelanceBot.connect()
 
     AdalovelanceBot.loadCommandsFromDatabase()
-
     //AdalovelanceBot.addCommand("2", CommandFactory.getCommand(CommandType.PRESENCE_COMMAND))
     //AdalovelanceBot.addCommand("3", CommandFactory.getCommand(CommandType.RANDOM_GRADE_COMMAND))
 

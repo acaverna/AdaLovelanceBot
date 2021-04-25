@@ -1,21 +1,18 @@
 package com.github.caverna.adalovelance.controllers
 
 import com.github.caverna.adalovelance.bot.impl.AdalovelanceBot
-import com.github.caverna.adalovelance.model.StaticCommand
+import com.github.caverna.adalovelance.model.StaticText
 import com.github.caverna.adalovelance.persistence.StaticCommandRepository
 import javafx.beans.property.SimpleBooleanProperty
-import javafx.beans.value.ObservableValue
 import javafx.collections.FXCollections
 import javafx.collections.ListChangeListener
 import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.scene.control.*
-import javafx.scene.control.cell.CheckBoxTableCell
 import javafx.scene.control.cell.PropertyValueFactory
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.AnchorPane
 import javafx.stage.Modality
-import javafx.util.Callback
 
 class CommandController : EventHandler<MouseEvent> {
 
@@ -49,22 +46,22 @@ class CommandController : EventHandler<MouseEvent> {
     private lateinit var cmdDelete: Button
 
     @FXML
-    private lateinit var cmdCommandTable: TableView<StaticCommand>
+    private lateinit var cmdCommandTable: TableView<StaticText>
 
     @FXML
-    private lateinit var cmdTableColumnID: TableColumn<StaticCommand, Int>
+    private lateinit var cmdTableColumnID: TableColumn<StaticText, Int>
 
     @FXML
-    private lateinit var cmdTableColumnCommand: TableColumn<StaticCommand, String>
+    private lateinit var cmdTableColumnCommand: TableColumn<StaticText, String>
 
     @FXML
-    private lateinit var cmdTableColumnText: TableColumn<StaticCommand, String>
+    private lateinit var cmdTableColumnText: TableColumn<StaticText, String>
 
     @FXML
-    private lateinit var cmdTableColumnDescription: TableColumn<StaticCommand, String>
+    private lateinit var cmdTableColumnDescription: TableColumn<StaticText, String>
 
     @FXML
-    private lateinit var cmdTableColumnStreamerOnly: TableColumn<StaticCommand, Boolean>
+    private lateinit var cmdTableColumnStreamerOnly: TableColumn<StaticText, Boolean>
 
     @FXML
     fun initialize() {
@@ -131,7 +128,7 @@ class CommandController : EventHandler<MouseEvent> {
                 } else {
 
                     if (id == -1L) {
-                        val cmd = StaticCommand(
+                        val cmd = StaticText(
                             command = command,
                             text = text,
                             description = description,
@@ -159,7 +156,7 @@ class CommandController : EventHandler<MouseEvent> {
                         alert.showAndWait()
 
                     } else {
-                        val cmd = StaticCommand(
+                        val cmd = StaticText(
                             id = id,
                             command = command,
                             text = text,

@@ -1,7 +1,7 @@
 package com.github.caverna.adalovelance.controllers
 
 import com.github.caverna.adalovelance.bot.impl.AdalovelanceBot
-import com.github.caverna.adalovelance.model.TimerCommand
+import com.github.caverna.adalovelance.model.Timer
 import com.github.caverna.adalovelance.persistence.TimerCommandRepository
 import javafx.collections.FXCollections
 import javafx.collections.ListChangeListener
@@ -42,19 +42,19 @@ class TimerController : EventHandler<MouseEvent> {
     private lateinit var timerDelete: Button
 
     @FXML
-    private lateinit var timerCommandTable: TableView<TimerCommand>
+    private lateinit var timerCommandTable: TableView<Timer>
 
     @FXML
-    private lateinit var timerTableColumnID: TableColumn<TimerCommand, Int>
+    private lateinit var timerTableColumnID: TableColumn<Timer, Int>
 
     @FXML
-    private lateinit var timerTableColumnTimer: TableColumn<TimerCommand, Int>
+    private lateinit var timerTableColumnTimer: TableColumn<Timer, Int>
 
     @FXML
-    private lateinit var timerTableColumnText: TableColumn<TimerCommand, String>
+    private lateinit var timerTableColumnText: TableColumn<Timer, String>
 
     @FXML
-    private lateinit var timerTableColumnDescription: TableColumn<TimerCommand, String>
+    private lateinit var timerTableColumnDescription: TableColumn<Timer, String>
 
     fun initialize() {
 
@@ -135,7 +135,7 @@ class TimerController : EventHandler<MouseEvent> {
 
                     if (id == -1L) {
 
-                        val timerCommand = TimerCommand(
+                        val timerCommand = Timer(
                             timer = timerQuantityValue,
                             text = text,
                             description = description
@@ -162,7 +162,7 @@ class TimerController : EventHandler<MouseEvent> {
 
                     } else {
 
-                        val timerCommand = TimerCommand(
+                        val timerCommand = Timer(
                             id = id,
                             timer = timerQuantityValue,
                             text = text,
@@ -225,7 +225,7 @@ class TimerController : EventHandler<MouseEvent> {
                         Alert.AlertType.CONFIRMATION,
                         "Ada Lovelance Bot",
                         "Excluir temporizador",
-                        "Deve-se selecionar um dos temporizadores  listados na tabela para realizar esta operação"
+                        "Deve-se selecionar um dos temporizadores listados na tabela para realizar esta operação"
                     )
 
                     val buttonOk = ButtonType("Ok", ButtonBar.ButtonData.OK_DONE)

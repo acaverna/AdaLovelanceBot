@@ -5,7 +5,7 @@ import javax.persistence.*
 @Entity
 @Table(name = "timers")
 @SequenceGenerator(name = "pk_timers_seq", sequenceName = "timers_id_seq", allocationSize = 1)
-data class TimerCommand(
+data class Timer(
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_timers_seq")
     val id:Long?=null,

@@ -10,11 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="cmdAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.caverna.adalovelance.controllers.SoundController">
+<AnchorPane fx:id="soundAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.caverna.adalovelance.controllers.SoundController">
    <children>
       <Pane layoutY="51.0" prefHeight="125.0" prefWidth="960.0" style="-fx-background-color: #aad9a3;">
          <children>
-            <Text fill="WHITE" layoutX="50.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sons" wrappingWidth="293.35546875">
+            <Text fill="WHITE" layoutX="50.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sons" wrappingWidth="293.35546875">
                <font>
                   <Font size="48.0" />
                </font>
@@ -38,13 +38,13 @@
       <Label layoutX="14.0" layoutY="205.0" text="ID" />
       <TextField fx:id="soundCommand" layoutX="72.0" layoutY="221.0" prefHeight="24.0" prefWidth="109.0" />
       <Label layoutX="72.0" layoutY="205.0" text="Comando" />
-      <TextField fx:id="soundPath" disable="true" editable="false" layoutX="192.0" layoutY="221.0" prefHeight="24.0" prefWidth="278.0" />
+      <TextField fx:id="soundName" disable="true" editable="false" layoutX="192.0" layoutY="221.0" prefHeight="24.0" prefWidth="326.0" />
       <Label layoutX="192.0" layoutY="205.0" text="Arquivo de audio" />
       <TextField fx:id="soundDescription" layoutX="627.0" layoutY="221.0" prefHeight="24.0" prefWidth="319.0" />
       <Label layoutX="628.0" layoutY="205.0" text="Descrição" />
       <Button fx:id="soundDelete" alignment="CENTER" contentDisplay="CENTER" layoutX="846.0" layoutY="253.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" styleClass="command_button_delete" stylesheets="@style.css" text="Excluir" />
       <Button fx:id="soundSave" alignment="CENTER" contentDisplay="CENTER" layoutX="736.0" layoutY="253.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" styleClass="command_button_save" stylesheets="@style.css" text="Salvar" />
       <Button fx:id="soundClear" layoutX="628.0" layoutY="255.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" styleClass="command_button_clear" stylesheets="@style.css" text="Limpar" />
-      <Button fx:id="soundFileSelect" layoutX="480.0" layoutY="221.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="137.0" text="Selecionar" />
+      <Button fx:id="soundFileSelect" layoutX="527.0" layoutY="221.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="90.0" text="Selecionar" />
    </children>
 </AnchorPane>

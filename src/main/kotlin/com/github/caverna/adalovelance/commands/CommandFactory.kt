@@ -13,6 +13,7 @@ object CommandFactory {
             CommandType.STATIC_TEXT_COMMAND -> StaticTextCommand(*args)
             CommandType.TIMED_COMMAND -> TimedCommand(*args)
             CommandType.TEST_COMMAND -> TestCommand()
+            CommandType.SOUND_COMMAND -> SoundCommand(*args)
         }
     }
 }

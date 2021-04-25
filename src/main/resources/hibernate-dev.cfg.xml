@@ -26,9 +26,9 @@
         <property name="hbm2ddl.auto">create-drop</property>
 
         <mapping class="com.github.caverna.adalovelance.model.Presence" />
-        <mapping class="com.github.caverna.adalovelance.model.StaticCommand" />
-        <mapping class="com.github.caverna.adalovelance.model.TimerCommand" />
-        <mapping class="com.github.caverna.adalovelance.model.SoundCommand" />
+        <mapping class="com.github.caverna.adalovelance.model.StaticText" />
+        <mapping class="com.github.caverna.adalovelance.model.Timer" />
+        <mapping class="com.github.caverna.adalovelance.model.Sound" />
 
     </session-factory>
 </hibernate-configuration>

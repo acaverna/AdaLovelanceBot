@@ -6,5 +6,6 @@ enum class CommandType {
     RANDOM_GRADE_COMMAND,
     STATIC_TEXT_COMMAND,
     TIMED_COMMAND,
+    SOUND_COMMAND,
     TEST_COMMAND
 }

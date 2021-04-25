@@ -1,7 +1,7 @@
 package com.github.caverna.adalovelance.persistence
 
-import com.github.caverna.adalovelance.model.TimerCommand
+import com.github.caverna.adalovelance.model.Timer
 
-class TimerCommandRepository:BaseRepository<TimerCommand>(TimerCommand::class.java) {
+class TimerCommandRepository:BaseRepository<Timer>(Timer::class.java) {
 
 }

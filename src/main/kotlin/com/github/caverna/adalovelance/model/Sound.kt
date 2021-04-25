@@ -5,7 +5,7 @@ import javax.persistence.*
 @Entity
 @Table(name="sound_commands")
 @SequenceGenerator(name = "pk_sound_commands_seq", sequenceName = "sound_commands_id_seq", allocationSize = 1)
-data class SoundCommand(
+data class Sound(
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sound_commands_seq")
     val id:Long?=null,

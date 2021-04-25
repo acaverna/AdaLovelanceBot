@@ -1,6 +1,6 @@
 package com.github.caverna.adalovelance.persistence
 
-import com.github.caverna.adalovelance.model.SoundCommand
+import com.github.caverna.adalovelance.model.Sound
 
-class SoundCommandRepository:BaseRepository<SoundCommand>(SoundCommand::class.java) {
+class SoundCommandRepository:BaseRepository<Sound>(Sound::class.java) {
 }

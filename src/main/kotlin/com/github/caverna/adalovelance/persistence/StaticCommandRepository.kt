@@ -1,7 +1,7 @@
 package com.github.caverna.adalovelance.persistence
 
-import com.github.caverna.adalovelance.model.StaticCommand
+import com.github.caverna.adalovelance.model.StaticText
 
-class StaticCommandRepository:BaseRepository<StaticCommand>(StaticCommand::class.java) {
+class StaticCommandRepository:BaseRepository<StaticText>(StaticText::class.java) {
 
 }
