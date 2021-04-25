@@ -1,11 +1,10 @@
 package com.github.caverna.adalovelance.persistence
 
-import com.github.caverna.adalovelance.model.Presence
 import com.github.caverna.adalovelance.util.HibernateUtil
 
 abstract class BaseRepository<T> (val clazz:Class<T>){
 
-    protected val sessionFactory = HibernateUtil.getSessionFactory()
+    protected val sessionFactory = HibernateUtil.getSessionFactory(true)
 
     fun save(obj:T){
         val session = this.sessionFactory.openSession()

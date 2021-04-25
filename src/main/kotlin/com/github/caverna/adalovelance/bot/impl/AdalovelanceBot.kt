@@ -8,6 +8,7 @@ import com.github.caverna.adalovelance.commands.CommandFactory
 import com.github.caverna.adalovelance.commands.CommandType
 import com.github.caverna.adalovelance.model.ChatMessage
 import com.github.caverna.adalovelance.persistence.StaticCommandRepository
+import com.github.caverna.adalovelance.persistence.TimerCommandRepository
 import com.github.philippheuer.credentialmanager.domain.OAuth2Credential
 import com.github.twitch4j.TwitchClient
 import com.github.twitch4j.TwitchClientBuilder
@@ -30,6 +31,7 @@ object AdalovelanceBot : IBot {
     private lateinit var twitchClient: TwitchClient
 
     private val staticCommandRepository = StaticCommandRepository()
+    private val timerCommandRepository = TimerCommandRepository()
     private val chatMessageListeners = mutableListOf<OnChatMessageListener>()
     private val logger = LoggerFactory.getLogger(AdalovelanceBot::class.java.name)
 
@@ -106,9 +108,23 @@ object AdalovelanceBot : IBot {
         }
 
         this.commands.clear()
-        this.addCommand("-1", CommandFactory.getCommand(CommandType.TERMINAL_COMMAND))
+        this.addCommand(UUID.randomUUID().toString(), CommandFactory.getCommand(CommandType.TERMINAL_COMMAND))
         this.loadStaticCommandsFromDatabase()
+        this.loadTimerCommandsFromDatabase()
         println("Processo finalizado!")
+    }
+
+    private fun loadTimerCommandsFromDatabase(){
+        timerCommandRepository.findAll().forEach {
+            this.addCommand(
+                UUID.randomUUID().toString(),
+                CommandFactory.getCommand(
+                    CommandType.TIMED_COMMAND,
+                    it.timer.toString(),
+                    it.text
+                )
+            )
+        }
     }
 
     private fun loadStaticCommandsFromDatabase(){

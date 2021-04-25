@@ -3,17 +3,18 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <!-- JDBC Database connection settings -->
-        <property name="connection.driver_class">org.h2.Driver</property>
-        <property name="connection.url">jdbc:h2:mem:./adalovelance-test</property>
-        <property name="connection.username">sa</property>
-        <property name="connection.password"/>
 
-        <!-- JDBC connection pool settings ... using built-in test pool -->
-        <property name="connection.pool_size">1</property>
+        <!-- JDBC Database connection settings -->
+        <property name="connection.driver_class">org.sqlite.JDBC</property>
+        <property name="connection.url">jdbc:sqlite:memory:</property>
+        <property name="connection.username"></property>
+        <property name="connection.password"></property>
 
         <!-- Select our SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.H2Dialect</property>
+        <property name="dialect">org.hibernate.dialect.SQLiteDialect</property>
+
+        <!-- JDBC connection pool settings ... using built-in test pool -->
+        <property name="connection.pool_size">100</property>
 
         <!-- Echo the SQL to stdout -->
         <property name="show_sql">true</property>
@@ -26,6 +27,7 @@
 
         <mapping class="com.github.caverna.adalovelance.model.Presence" />
         <mapping class="com.github.caverna.adalovelance.model.StaticCommand" />
+        <mapping class="com.github.caverna.adalovelance.model.TimerCommand" />
 
     </session-factory>
 </hibernate-configuration>

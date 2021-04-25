@@ -1,19 +1,12 @@
 package com.github.caverna.adalovelance
 
 import com.github.caverna.adalovelance.bot.impl.AdalovelanceBot
-import com.github.caverna.adalovelance.commands.CommandFactory
-import com.github.caverna.adalovelance.commands.CommandType
 import javafx.application.Application
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.scene.image.Image
 import javafx.stage.Stage
-import javafx.stage.StageStyle
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import org.h2.tools.Server
-import java.util.*
 import kotlin.system.exitProcess
 
 
@@ -42,9 +35,6 @@ class App : Application() {
 }
 
 fun main() {
-
-    // Criação do servidor H2
-    Server.createTcpServer("-tcpPort", "9092", "-tcpAllowOthers").start()
 
     AdalovelanceBot.connect()
 

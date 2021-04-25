@@ -4,9 +4,10 @@ import javax.persistence.*
 
 @Entity
 @Table(name="static_commands")
+@SequenceGenerator(name = "pk_static_commands_seq", sequenceName = "static_commands_id_seq", allocationSize = 1)
 data class StaticCommand (
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_static_commands_seq")
     val id:Long? = null,
     @Column(nullable = false)
     val command:String,

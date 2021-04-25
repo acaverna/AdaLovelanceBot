@@ -27,7 +27,9 @@ class TimedCommand(vararg args:String):BaseCommand() {
         GlobalScope.launch {
             while(isRunning){
                 delay(time.minutes)
-                bot.sendMessage(text)
+                if(isRunning){
+                    bot.sendMessage(text)
+                }
             }
         }
 
