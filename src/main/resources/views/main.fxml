@@ -32,52 +32,60 @@
                         </ImageView>
                      </children>
                   </Pane>
-                  <Button fx:id="mainMenuChat" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="75.0" styleClass="menu_button" stylesheets="@style.css" text="Chat">
+                  <Button fx:id="mainMenuChat" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" styleClass="menu_button" stylesheets="@style.css" text="Chat">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="COMMENT" nodeOrientation="LEFT_TO_RIGHT" textAlignment="CENTER" />
                      </graphic>
                      <VBox.margin>
-                        <Insets left="20.0" top="10.0" />
+                        <Insets left="20.0" top="8.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="mainMenuCommands" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="75.0" styleClass="menu_button" stylesheets="@style.css" text="Comandos">
+                  <Button fx:id="mainMenuCommands" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" styleClass="menu_button" stylesheets="@style.css" text="Comandos">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="EXCLAMATION" nodeOrientation="LEFT_TO_RIGHT" textAlignment="CENTER" />
                      </graphic>
                      <VBox.margin>
-                        <Insets left="20.0" top="10.0" />
+                        <Insets left="20.0" top="8.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="mainMenuTimers" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="75.0" styleClass="menu_button" stylesheets="@style.css" text="Temporizador">
+                  <Button fx:id="mainMenuTimers" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" styleClass="menu_button" stylesheets="@style.css" text="Temporizador">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="HOURGLASS_HALF" nodeOrientation="LEFT_TO_RIGHT" textAlignment="CENTER" />
                      </graphic>
                      <VBox.margin>
-                        <Insets left="20.0" top="10.0" />
+                        <Insets left="20.0" top="8.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="mainMenuSettings" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="75.0" styleClass="menu_button" stylesheets="@style.css" text="Configurações">
+                  <Button fx:id="mainMenuSounds" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" styleClass="menu_button" stylesheets="@style.css" text="Sons">
                      <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="COGS" nodeOrientation="LEFT_TO_RIGHT" textAlignment="CENTER" />
+                        <FontAwesomeIconView fill="WHITE" glyphName="PLAY" nodeOrientation="LEFT_TO_RIGHT" textAlignment="CENTER" />
                      </graphic>
                      <VBox.margin>
-                        <Insets left="20.0" top="10.0" />
+                        <Insets left="20.0" top="8.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="mainMenuModules" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="75.0" styleClass="menu_button" stylesheets="@style.css" text="Módulos">
+                  <Button fx:id="mainMenuModules" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" styleClass="menu_button" stylesheets="@style.css" text="Módulos">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="CUBES" nodeOrientation="LEFT_TO_RIGHT" textAlignment="CENTER" />
                      </graphic>
                      <VBox.margin>
-                        <Insets left="20.0" top="10.0" />
+                        <Insets left="20.0" top="8.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="mainMenuExit" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="75.0" styleClass="menu_button_exit" stylesheets="@style.css" text="Sair">
+                  <Button fx:id="mainMenuSettings" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" styleClass="menu_button" stylesheets="@style.css" text="Configurações">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="COGS" nodeOrientation="LEFT_TO_RIGHT" textAlignment="CENTER" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="20.0" top="8.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="mainMenuExit" alignment="BASELINE_LEFT" graphicTextGap="15.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" styleClass="menu_button_exit" stylesheets="@style.css" text="Sair">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="FONT" nodeOrientation="LEFT_TO_RIGHT" textAlignment="CENTER" />
                      </graphic>
                      <VBox.margin>
-                        <Insets left="20.0" top="10.0" />
+                        <Insets left="20.0" top="8.0" />
                      </VBox.margin>
                   </Button>
                </children>

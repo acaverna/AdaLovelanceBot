@@ -28,6 +28,7 @@
         <mapping class="com.github.caverna.adalovelance.model.Presence" />
         <mapping class="com.github.caverna.adalovelance.model.StaticCommand" />
         <mapping class="com.github.caverna.adalovelance.model.TimerCommand" />
+        <mapping class="com.github.caverna.adalovelance.model.SoundCommand" />
 
     </session-factory>
 </hibernate-configuration>

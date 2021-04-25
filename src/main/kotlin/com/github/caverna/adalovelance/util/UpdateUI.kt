@@ -7,11 +7,13 @@ import javafx.scene.layout.BorderPane
 
 object UpdateUI {
 
-    private val CHAT_FXML_PATH = "/views/chat.fxml"
-    private val COMMANDS_FXML_PATH = "/views/commands.fxml"
-    private val TIMERS_FXML_PATH = "/views/timers.fxml"
-    private val SETTINGS_FXML_PATH = "/views/settings.fxml"
-    private val MODULES_FXML_PATH = "/views/modules.fxml"
+    private const val CHAT_FXML_PATH = "/views/chat.fxml"
+    private const val COMMANDS_FXML_PATH = "/views/commands.fxml"
+    private const val TIMERS_FXML_PATH = "/views/timers.fxml"
+    private const val SOUNDS_FXML_PATH = "/views/sounds.fxml"
+    private const val MODULES_FXML_PATH = "/views/modules.fxml"
+    private const val SETTINGS_FXML_PATH = "/views/settings.fxml"
+
 
     private val scenesLoader = mutableMapOf<SCENE, Parent>()
 
@@ -19,8 +21,9 @@ object UpdateUI {
         CHAT,
         COMMAND,
         TIMERS,
-        SETTINGS,
+        SOUNDS,
         MODULES,
+        SETTINGS,
     }
 
     fun update(borderPane: BorderPane, scene: SCENE) {
@@ -48,10 +51,9 @@ object UpdateUI {
                 scenesLoader[scene]!!
             }
 
-            SCENE.SETTINGS -> {
+            SCENE.SOUNDS -> {
                 if (!scenesLoader.containsKey(scene)) {
-                    scenesLoader[scene] =
-                        FXMLLoader.load(UpdateUI::class.java.getResource(SETTINGS_FXML_PATH)) as Parent
+                    scenesLoader[scene] = FXMLLoader.load(UpdateUI::class.java.getResource(SOUNDS_FXML_PATH)) as Parent
                 }
                 scenesLoader[scene]!!
             }
@@ -59,6 +61,14 @@ object UpdateUI {
             SCENE.MODULES -> {
                 if (!scenesLoader.containsKey(scene)) {
                     scenesLoader[scene] = FXMLLoader.load(UpdateUI::class.java.getResource(MODULES_FXML_PATH)) as Parent
+                }
+                scenesLoader[scene]!!
+            }
+
+            SCENE.SETTINGS -> {
+                if (!scenesLoader.containsKey(scene)) {
+                    scenesLoader[scene] =
+                        FXMLLoader.load(UpdateUI::class.java.getResource(SETTINGS_FXML_PATH)) as Parent
                 }
                 scenesLoader[scene]!!
             }

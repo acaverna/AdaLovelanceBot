@@ -22,7 +22,6 @@ class MainController : EventHandler<MouseEvent> {
     private val EXIT_SUCCESS = 0
 
 
-
     @FXML
     private lateinit var mainMenuChat: Button
 
@@ -33,10 +32,13 @@ class MainController : EventHandler<MouseEvent> {
     private lateinit var mainMenuTimers: Button
 
     @FXML
-    private lateinit var mainMenuSettings: Button
+    private lateinit var mainMenuSounds: Button
 
     @FXML
     private lateinit var mainMenuModules: Button
+
+    @FXML
+    private lateinit var mainMenuSettings: Button
 
     @FXML
     private lateinit var mainMenuExit: Button
@@ -50,8 +52,9 @@ class MainController : EventHandler<MouseEvent> {
         mainMenuChat.onMouseClicked = this
         mainMenuCommands.onMouseClicked = this
         mainMenuTimers.onMouseClicked = this
-        mainMenuSettings.onMouseClicked = this
+        mainMenuSounds.onMouseClicked = this
         mainMenuModules.onMouseClicked = this
+        mainMenuSettings.onMouseClicked = this
         mainMenuExit.onMouseClicked = this
 
         UpdateUI.update(mainLayoutContainer, UpdateUI.SCENE.CHAT)
@@ -60,7 +63,7 @@ class MainController : EventHandler<MouseEvent> {
 
     override fun handle(event: MouseEvent?) {
 
-        when(event?.source){
+        when (event?.source) {
 
             mainMenuChat -> {
                 UpdateUI.update(mainLayoutContainer, UpdateUI.SCENE.CHAT)
@@ -70,16 +73,20 @@ class MainController : EventHandler<MouseEvent> {
                 UpdateUI.update(mainLayoutContainer, UpdateUI.SCENE.COMMAND)
             }
 
-            mainMenuTimers ->{
+            mainMenuTimers -> {
                 UpdateUI.update(mainLayoutContainer, UpdateUI.SCENE.TIMERS)
             }
 
-            mainMenuSettings ->{
-                UpdateUI.update(mainLayoutContainer, UpdateUI.SCENE.SETTINGS)
+            mainMenuSounds -> {
+                UpdateUI.update(mainLayoutContainer, UpdateUI.SCENE.SOUNDS)
             }
 
-            mainMenuModules ->{
+            mainMenuModules -> {
                 UpdateUI.update(mainLayoutContainer, UpdateUI.SCENE.MODULES)
+            }
+
+            mainMenuSettings -> {
+                UpdateUI.update(mainLayoutContainer, UpdateUI.SCENE.SETTINGS)
             }
 
             mainMenuExit -> {
