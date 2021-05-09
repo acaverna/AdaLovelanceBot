@@ -6,7 +6,7 @@
 
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">org.sqlite.JDBC</property>
-        <property name="connection.url">jdbc:sqlite:memory:</property>
+        <property name="connection.url">jdbc:sqlite::memory:</property>
         <property name="connection.username"></property>
         <property name="connection.password"></property>
 

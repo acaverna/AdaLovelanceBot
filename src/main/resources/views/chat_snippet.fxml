@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="926.0" style="-fx-background-color: #ffffff; -fx-padding: 10px; -fx-border-insets: 10px; -fx-background-insets: 10px;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.caverna.adalovelance.controllers.ChatSnippetController">
+   <children>
+      <Label fx:id="chatSnippetUsername" layoutX="14.0" layoutY="6.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </Label>
+      <Label fx:id="chatSnippetMessage" layoutX="14.0" layoutY="52.0" prefHeight="16.0" prefWidth="924.0" wrapText="true" />
+      <Label fx:id="chatSnippetDate" layoutX="14.0" layoutY="31.0">
+         <font>
+            <Font name="System Italic" size="10.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

@@ -70,7 +70,7 @@ object AdalovelanceBot : IBot {
 
         this.twitchClient.chat.eventManager.onEvent(ChannelMessageEvent::class.java) { t ->
 
-            val chatMessage = ChatMessage(t.message, t.user.name, t.messageEvent.firedAt.time)
+            val chatMessage = ChatMessage(t.message, t.user.name, t.messageEvent.firedAtInstant)
 
             this.chatMessageListeners.forEach {
                 GlobalScope.launch {

@@ -33,14 +33,18 @@ class App : Application() {
 
         primaryStage.show()
 
+        AdalovelanceBot.connect()
+
+        AdalovelanceBot.loadCommandsFromDatabase()
+
     }
 }
 
 fun main() {
 
-    AdalovelanceBot.connect()
+    //AdalovelanceBot.connect()
 
-    AdalovelanceBot.loadCommandsFromDatabase()
+    //AdalovelanceBot.loadCommandsFromDatabase()
     //AdalovelanceBot.addCommand("2", CommandFactory.getCommand(CommandType.PRESENCE_COMMAND))
     //AdalovelanceBot.addCommand("3", CommandFactory.getCommand(CommandType.RANDOM_GRADE_COMMAND))
 
